@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.sheng.blog.mapper.ArticleMapper">
+    <insert id="insertArticle" parameterType="cn.sheng.blog.pojo.Article">
+        insert into article (title, author, content, description, picture, date) values(#{title}, #{author}, #{content}, #{description}, #{picture}, #{date});
+    </insert>
+    <update id="updateArticle">
+        update article set title = #{title}, author = #{author}, content = #{content}, description = #{description}, picture = #{picture}, date = #{date} where id = #{id};
+    </update>
+    <delete id="deleteById">
+        delete from article where id = #{id};
+    </delete>
+
+    <select id="getArticleById" resultType="cn.sheng.blog.pojo.Article" parameterType="int">
+        select * from article where id = #{id};
+    </select>
+    <select id="getArticles" resultType="cn.sheng.blog.pojo.Article">
+        select * from article order by id desc;
+    </select>
+</mapper>

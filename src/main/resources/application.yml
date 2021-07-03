@@ -1,0 +1,25 @@
+server:
+  port: 8081
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/markdowntest01?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+
+#文件上传的本地路径
+#  servlet:
+#    multipart:
+#      location: E:/cache/editPicture/
+#  web:
+#    resources:
+##      static-locations: classpath:static/, file:${spring.servlet.multipart.location}
+#      static-locations: classpath:static/
+
+
+mybatis:
+  mapper-locations: classpath:/mappers/*.xml
+  type-aliases-package: cn.sheng.blog.pojo
+  configuration:
+    map-underscore-to-camel-case: true

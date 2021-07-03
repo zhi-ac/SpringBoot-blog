@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title)">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <title th:replace="${title}">博客管理</title>
+    <link rel="stylesheet" href="../static/css/semantic.min.css" th:href="@{/css/semantic.min.css}">
+    <link rel="stylesheet" type="text/css" href="../static/css/manster.css" th:href="@{/css/manster.css}"/>
+    <link rel="stylesheet" href="../static/plugins/editormd/css/editormd.css"
+          th:href="@{/plugins/editormd/css/editormd.css}"/>
+</head>
+<body>
+<!-- 导航 -->
+<nav th:fragment="menu(n)" class="ui inverted attached segment m-padded-tb-mini">
+    <div class="ui container">
+        <div class="ui inverted secondary stackable menu">
+            <h2 class="ui blue header item">MansterBlog</h2>
+            <a href="#" th:href="@{/admin/blogs}" class="m-item item m-mobile-hide" th:classappend="${n==1} ? 'active'"><i
+                    class="small home icon"></i>首页</a>
+            <a href="#" th:href="@{/admin/types}" class="m-item item m-mobile-hide" th:classappend="${n==2} ? 'active'"><i
+                    class="small idea icon"></i>分类</a>
+            <a href="#" th:href="@{/admin/tags}" class="m-item item m-mobile-hide"
+               th:classappend="${n==3} ? 'active'"><i class="small tags icon"></i>标签</a>
+            <div class="right m-item m-mobile-hide menu">
+                <div class="ui dropdown  item">
+                    <div class="text">
+                        <img class="ui avatar image" src="https://picsum.photos/id/0/100/100"
+                             th:src="@{${session.user.avatar}}">
+                        <span th:text="${session.user.nickname}">manster</span>
+                    </div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a href="#" th:href="@{/admin/logout}" class="item">注销</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
+        <i class="sidebar icon"></i>
+    </a>
+</nav>
+
+<!-- 底部 -->
+<footer th:fragment="footer" class="ui inverted vertical segment m-padded-tb-large">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided stackable grid">
+            <div class="three wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="../static/images/weichat.jpg" th:src="@{/images/weichat.jpg}" class="ui rounded image"
+                             alt="" style="width: 110px;">
+                    </div>
+                </div>
+            </div>
+            <div class="three wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced">最新Blog</h4>
+                <div class="ui inverted link list">
+                    <a href="#" class="item">java 多线程</a>
+                    <a href="#" class="item">java 集合</a>
+                    <a href="#" class="item">java 反射</a>
+                </div>
+            </div>
+            <div class="four wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced">联系我</h4>
+                <div class="ui inverted link list">
+                    <a href="https://gitee.com/manster1231" target="_blank" class="item">Gitee：https://gitee.com/manster1231</a>
+                    <a href="#" class="item">Email：manster1231@163.com</a>
+                    <a href="#" class="item">QQ：1249041911</a>
+                </div>
+            </div>
+            <div class="six wide column">
+                <h4 class="ui inverted header m-text-thin m-text-spaced">manster</h4>
+                <p class="m-text-thin m-text-spaced m-opacity-mini">这里是manster的博客，有关我所知道的一切都愿与你交流</p>
+                <p class="m-text-thin m-text-spaced m-opacity-mini">Talk is cheap show me the code</p>
+            </div>
+        </div>
+        <div class="ui inverted section divider"></div>
+        <p class="m-text-thin m-text-spaced m-opacity-tiny">CopyRight © 2021 - 2021 manster Designed by manster</p>
+    </div>
+</footer>
+
+<th:block th:fragment="script">
+    <script src="../static/js/jquery-3.3.1.js" th:src="@{/js/jquery-3.3.1.js}"></script>
+    <script src="../static/js/semantic.min.js" th:src="@{/js/semantic.min.js}"></script>
+    <script type="text/javascript" color="240,248,255" opacity='0.8' zIndex="-1" count="99"
+            src="../static/js/canvas-nest.js" th:src="@{/js/canvas-nest.js}"></script>
+    <script src="../static/plugins/editormd/editormd.min.js" th:src="@{/plugins/editormd/editormd.min.js}"></script>
+</th:block>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>起始</title>
+    <link rel="shortcut icon" href="https://pandao.github.io/editor.md/favicon.ico" type="image/x-icon" />
+    <style type="text/css">
+        .time {
+            text-decoration: none;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+            background-size: 200%;
+            width: 400px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            border: none;
+            color: #FFF;
+            text-transform: uppercase;
+            border-radius: 50px;
+            z-index: 1;
+        }
+
+        .time::before {
+            content: "";
+            position: absolute;
+            left: -5px;
+            right: -5px;
+            top: -5px;
+            bottom: -5px;
+            background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+            background-size: 200%;
+            border-radius: 50px;
+            filter: blur(20px);
+            z-index: -1;
+        }
+
+        .time:hover::before {
+            animation: sun 8s infinite;
+        }
+
+        .time:hover {
+            animation: sun 8s infinite;
+        }
+
+        body {
+            background-color: #0f0f10;
+        }
+
+        @keyframes sun {
+            100% {
+                background-position: -400% 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<a class="time" href="login2.html" th:href="@{/admin/blogs}">一切从这里开始</a>
+<!--<script src="../static/js/jquery-3.3.1.js" th:src="@{/js/jquery-3.3.1.js}"></script>-->
+<script th:src="@{/js/examples/jquery.min.js}"></script>
+<script type="text/javascript">
+    window.onload = function () {
+        var minSize = 15; //最小字体
+        var maxSize = 30; //最大字体
+        var newOne = 600; //生成雪花间隔
+        var flakColor = "#1bd3ff"; //雪花颜色
+        var flak = $("<div></div>").css({
+            position: "absolute",
+            "top": "0px"
+        }).html("❉"); //定义一个雪花
+        var dhight = $(window).height(); //定义视图高度
+        var dw = $(window).width() - 80; //定义视图宽度
+        setInterval(function () {
+            var sizeflak = minSize + Math.random() * maxSize; //产生大小不等的雪花
+            var startLeft = Math.random() * dw; //雪花生成是随机的left值
+            var startOpacity = 0.7 + Math.random() * 0.3; //随机透明度
+            var endTop = dhight - 100; //雪花停止top的位置
+            var endLeft = Math.random() * dw; //雪花停止的left位置
+            var durationfull = 5000 + Math.random() * 3000; //雪花飘落速度不同
+            flak.clone().appendTo($("body")).css({
+                "left": startLeft,
+                "opacity": startOpacity,
+                "font-size": sizeflak,
+                "color": flakColor
+            }).animate({
+                "top": endTop,
+                "left": endLeft,
+                "apacity": 0.1
+            }, durationfull, function () {
+                $(this).remove()
+            });
+        }, newOne);
+    }
+</script>
+</body>
+</html>
